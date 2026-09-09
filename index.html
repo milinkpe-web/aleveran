@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AleVeran — Sitio en construcción">
+  <title>AleVeran · En construcción</title>
+  <style>
+    :root {
+      --petrol: #0d3b45;
+      --petrol-soft: #175b66;
+      --petrol-glow: rgba(13, 59, 69, 0.35);
+      --petrol-faint: rgba(13, 59, 69, 0.08);
+      --grid-line: rgba(13, 59, 69, 0.07);
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--petrol);
+      overflow: hidden;
+    }
+
+    /* Destello central */
+    .glow {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 42%, var(--petrol-faint) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(18px, 4vh, 40px);
+      padding: 24px;
+      text-align: center;
+    }
+
+    /* Isotipo */
+    .isotipo {
+      width: clamp(110px, 22vw, 190px);
+      height: auto;
+      filter: drop-shadow(0 0 18px var(--petrol-glow));
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    /* Logotipo / nombre de la marca */
+    .wordmark {
+      width: clamp(150px, 34vw, 300px);
+      height: auto;
+    }
+
+    .tagline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Space Mono", "Courier New", monospace;
+      font-size: clamp(11px, 1.6vw, 15px);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--petrol);
+    }
+
+    .tagline::before,
+    .tagline::after {
+      content: "";
+      width: clamp(28px, 6vw, 56px);
+      height: 1px;
+      background: var(--petrol-soft);
+      opacity: 0.45;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--petrol);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    /* Texto en construcción */
+    .msg {
+      font-size: clamp(24px, 6vw, 52px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--petrol);
+      line-height: 1.1;
+    }
+
+    .msg .hollow {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--petrol);
+    }
+
+    .sub {
+      max-width: 460px;
+      font-size: clamp(13px, 2vw, 17px);
+      color: var(--petrol-soft);
+      opacity: 0.85;
+    }
+
+    /* Barra de progreso futurista */
+    .loader {
+      width: min(320px, 70vw);
+      height: 3px;
+      background: var(--petrol-faint);
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .loader::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 40%;
+      background: linear-gradient(90deg, transparent, var(--petrol), transparent);
+      animation: sweep 1.8s ease-in-out infinite;
+    }
+
+    .eta {
+      font-family: "Space Mono", "Courier New", monospace;
+      font-size: clamp(10px, 1.5vw, 13px);
+      letter-spacing: 0.14em;
+      color: var(--petrol-soft);
+      opacity: 0.7;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.035); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.15; }
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(350%); }
+    }
+
+    @media (max-width: 480px) {
+      .tagline::before,
+      .tagline::after { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .isotipo, .status-dot, .loader::after { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+
+  <main>
+    <img class="isotipo" src="AleVeran_isotipo2026.png" alt="Isotipo AleVeran">
+    <img class="wordmark" src="AleVeran2026.png" alt="AleVeran">
+
+    <div class="tagline">
+      <span class="status-dot"></span>
+      SITIO WEB ECOMMERCE
+      <span class="status-dot"></span>
+    </div>
+
+    <h1 class="msg">EN <span class="hollow">CONSTRUCCION</span></h1>
+
+    <p class="sub">Estamos preparando nuestra tienda online. Muy pronto podrás explorar, comprar y vivir una experiencia de compra moderna.</p>
+
+    <div class="loader" role="progressbar" aria-label="Cargando"></div>
+    <p class="eta">PROGRESSO DE LANZAMIENTO · 97.3%</p>
+  </main>
+</body>
+</html>
